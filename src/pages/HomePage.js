@@ -24,9 +24,6 @@ function AllMeetupsPage() {
           <div>
             <button>Search</button>
           </div>
-          
-          
-
         </form>
 
       </Wrapper>
