@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 
 
-function AllMeetupsPage() {
+function HomePage() {
 
   const [text, setText] = useState(null);
    
@@ -58,4 +58,4 @@ function AllMeetupsPage() {
 
 }
 
-export default AllMeetupsPage;
+export default HomePage;

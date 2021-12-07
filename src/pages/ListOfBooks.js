@@ -1,4 +1,4 @@
-function NewMeetupsPage() {
+function ListOfBooksPage() {
     return (
         <div>
             The list of Books to Search
@@ -7,4 +7,4 @@ function NewMeetupsPage() {
 
 }
 
-export default NewMeetupsPage;
+export default ListOfBooksPage;

@@ -1,4 +1,4 @@
-function NewFavouritesPage() {
+function BooksStoredPage() {
     return (
         <div>
             The list of Books stored in the database
@@ -7,4 +7,4 @@ function NewFavouritesPage() {
 
 }
 
-export default NewFavouritesPage;
+export default BooksStoredPage;

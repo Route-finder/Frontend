@@ -1,7 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
-import AllMeetupsPage from './pages/HomePage';
-import NewFavouritesPage from './pages/BookStored';
-import NewMeetupsPage from './pages/ListOfBooks';
+import HomePage from './pages/HomePage';
+import BooksStoredPage from './pages/BookStored';
+import ListOfBooksPage from './pages/ListOfBooks';
 // import MainNavigation from './components/layout/MainNavigation'
 import Layout from './components/layout/Layout';
 
@@ -10,9 +10,9 @@ function App() {
 
     <Layout>
       <Routes>
-        <Route path='/' element={<AllMeetupsPage />} />
-        <Route path='book-list' element = {<NewMeetupsPage />} />
-        <Route path='books-stored' element={<NewFavouritesPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='book-list' element = {<ListOfBooksPage />} />
+        <Route path='books-stored' element={<BooksStoredPage />} />
       </Routes>
     </Layout>
     
