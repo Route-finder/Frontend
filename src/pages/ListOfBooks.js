@@ -19,7 +19,7 @@ function ListOfBooksPage() {
 	 */
 
 	React.useEffect(() => {
-		fetch("http://library-guide.herokuapp.com/api/books")
+		fetch("https://library-guide.herokuapp.com/api/books")
 			.then((res) => res.json())
 			.then((data) => {
 				setData(data.results)
