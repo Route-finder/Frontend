@@ -4,7 +4,15 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+/**
+ * React and NPM Components
+ */
 import {Route, Routes} from 'react-router-dom';
+import 'normalize.css';
+
+/**
+ * Local application resources
+ */
 import HomePage from './pages/HomePage';
 import BooksStoredPage from './pages/BookStored';
 import ListOfBooksPage from './pages/ListOfBooks';
