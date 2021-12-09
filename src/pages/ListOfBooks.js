@@ -10,7 +10,7 @@ import {useState} from 'react';
 
 function ListOfBooksPage() {
 	const [data, setData] = React.useState(null);
-	
+
 	/**
 	 * Data in form:
 	 * {results: [
@@ -28,12 +28,11 @@ function ListOfBooksPage() {
 	}, []);
 
     const [text, setText] = useState(null);
-   
+
     const changeText = (event) => {
         event.preventDefault();
         let changeIt = "Currently Searching Shortest Route, Please Be PATIENT!";
         setText(changeIt);
-        
     };
 
 
@@ -58,11 +57,10 @@ function ListOfBooksPage() {
     return (
         <div>
             <h1>Books to be Found</h1>
-            
-            <Table columns={columns} data={data} /> 
-            <br />
-            <button onClick = {changeText}>Search</button> 
-            <br />  
+            <Table columns={columns} data={data} />
+
+            <button onClick = {changeText}>Search</button>
+
             <div>
                 {!text ? " ": text}
             </div>
