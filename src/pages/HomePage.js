@@ -22,6 +22,39 @@ function HomePage() {
         let s = document.getElementById("search");
         let b = document.getElementById("search1");
         let c = document.getElementById("search2");
+
+		/**
+		 * Submit request to backend with info for OCLC request
+		 */
+
+		// If ISBN provided, select the first result
+		if (b.value != "") {
+			let response = await fetch("https://library-guide.herokuapp.com/api/search", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8'
+				},
+				body: JSON.stringify(b)
+			});
+		}
+
+		// If title or author provided, send as a request
+		else if (s.vaule != "" || c.value != "") {
+			let response = await fetch("https://library-guide.herokuapp.com/api/search", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8'
+				},
+				body: JSON.stringify({author: s.vaule, title: c.value})
+			});
+		}
+
+		// Otherwise, return an error if no values provided
+		else {
+			alert("Please enter one or more values");
+		}
+		
+        
         let allText = "Book Name: " + s.value + ", " + " ISBN: " + b.value + ", " + " Author: " + c.value;
 
         setText(allText);
