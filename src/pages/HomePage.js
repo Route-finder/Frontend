@@ -29,18 +29,19 @@ function HomePage() {
 
 		// If ISBN provided, select the first result
 		if (b.value != "") {
-			let response = await fetch("https://library-guide.herokuapp.com/api/search", {
+			let response = fetch("https://library-guide.herokuapp.com/api/search", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8'
 				},
-				body: JSON.stringify(b)
+				body: JSON.stringify(b.value)
 			});
+      console.log(response);
 		}
 
 		// If title or author provided, send as a request
 		else if (s.vaule != "" || c.value != "") {
-			let response = await fetch("https://library-guide.herokuapp.com/api/search", {
+			let response = fetch("https://library-guide.herokuapp.com/api/search", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8'
