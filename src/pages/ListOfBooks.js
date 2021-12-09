@@ -47,7 +47,10 @@ function ListOfBooksPage() {
     return (
         <div>
             <h1>Books to be Found</h1>
-			<Table columns={columns} data={data} />
+            
+            <Table columns={columns} data={data} /> 
+            <br />
+            <button>Search</button>   
         </div>
     );
 }
