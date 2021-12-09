@@ -30,11 +30,8 @@ function ListOfBooksPage() {
     const [text, setText] = useState(null);
    
     const changeText = (event) => {
-        // When clicked, set text to value of input box
         event.preventDefault();
-        // console.log("Clicked");
-       let changeIt = "Currently Searching Shortest Route, Please Be PATIENT!";
-
+        let changeIt = "Currently Searching Shortest Route, Please Be PATIENT!";
         setText(changeIt);
         
     };
