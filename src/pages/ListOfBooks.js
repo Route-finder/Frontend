@@ -6,6 +6,7 @@
 
 import React from "react";
 import Table from 'rc-table';
+import {useState} from 'react';
 
 function ListOfBooksPage() {
 	const [data, setData] = React.useState(null);
@@ -25,6 +26,19 @@ function ListOfBooksPage() {
 				setData(data.results)
 			});
 	}, []);
+
+    const [text, setText] = useState(null);
+   
+    const changeText = (event) => {
+        // When clicked, set text to value of input box
+        event.preventDefault();
+        // console.log("Clicked");
+       let changeIt = "CurrentlySearching";
+
+        setText(changeIt);
+        
+    };
+
 
 	const columns = [
 		{
@@ -50,7 +64,11 @@ function ListOfBooksPage() {
             
             <Table columns={columns} data={data} /> 
             <br />
-            <button>Search</button>   
+            <button onClick = {changeText}>Search</button> 
+            <br />  
+            <div>
+                {!text ? " ": text}
+            </div>
         </div>
     );
 }
