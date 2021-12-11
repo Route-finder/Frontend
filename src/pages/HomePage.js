@@ -19,34 +19,34 @@ function HomePage() {
         // When clicked, set text to value of input box
         event.preventDefault();
         // console.log("Clicked");
-        let s = document.getElementById("search");
-        let b = document.getElementById("search1");
-        let c = document.getElementById("search2");
+        let author = document.getElementById("search");
+        let isbn = document.getElementById("search1");
+        let title = document.getElementById("search2");
 
 		/**
 		 * Submit request to backend with info for OCLC request
 		 */
 
 		// If ISBN provided, select the first result
-		if (b.value != "") {
+		if (isbn.value != "") {
 			let response = fetch("https://library-guide.herokuapp.com/api/search", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8'
 				},
-				body: JSON.stringify(b.value)
+				body: JSON.stringify(isbn.value)
 			});
-      console.log(response);
+      		console.log(response);
 		}
 
 		// If title or author provided, send as a request
-		else if (s.vaule != "" || c.value != "") {
+		else if (author.vaule != "" || title.value != "") {
 			let response = fetch("https://library-guide.herokuapp.com/api/search", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8'
 				},
-				body: JSON.stringify({author: s.vaule, title: c.value})
+				body: JSON.stringify({author: author.vaule, title: title.value})
 			});
 		}
 
