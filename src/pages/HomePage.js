@@ -8,9 +8,6 @@ import MeetupList from '../components/meetups/MeetupList';
 import Wrapper from '../components/ui/Wrapper';
 import {useState} from 'react';
 
-
-
-
 function HomePage() {
 
   const [text, setText] = useState(null);
@@ -19,52 +16,51 @@ function HomePage() {
         // When clicked, set text to value of input box
         event.preventDefault();
         // console.log("Clicked");
-        let s = document.getElementById("search");
-        let b = document.getElementById("search1");
-        let c = document.getElementById("search2");
+        let title = document.getElementById("search");
+        let isbn = document.getElementById("search1");
+        let author = document.getElementById("search2");
 
-		/**
-		 * Submit request to backend with info for OCLC request
-		 */
+      /**
+       * Submit request to backend with info for OCLC request
+       */
 
-		// If ISBN provided, select the first result
-		if (b.value != "") {
-			let response = fetch("https://library-guide.herokuapp.com/api/search", {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json;charset=utf-8'
-				},
-				body: JSON.stringify(b.value)
-			});
-      console.log(response);
-		}
+      // If ISBN provided, select the first result
+      if (isbn.value != "") {
+        const requestOptions = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({isbn: isbn.value})
+        };
 
-		// If title or author provided, send as a request
-		else if (s.vaule != "" || c.value != "") {
-			let response = fetch("https://library-guide.herokuapp.com/api/search", {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json;charset=utf-8'
-				},
-				body: JSON.stringify({author: s.vaule, title: c.value})
-			});
-		}
+        fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
+          .then(response => response.json())
+          .then(data => console.log(data));
+      }
 
-		// Otherwise, return an error if no values provided
-		else {
-			alert("Please enter one or more values");
-		}
-		
-        
-        let allText = "Book Name: " + s.value + ", " + " ISBN: " + b.value + ", " + " Author: " + c.value;
+      // If title or author provided, send as a request
+      else if (author.vaule != "" || title.value != "") {
+        let response = fetch("https://library-guide.herokuapp.com/api/search", {
+        // let response = fetch("http://localhost:3100/api/search/", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({author: author.vaule, title: title.value})
+        });
+        console.log(response);
+      }
 
-        setText(allText);
-        
+      // Otherwise, return an error if no values provided
+      else {
+        alert("Please enter one or more values");
+      }
+      
+      let allText = "Book Name: " + title.value + ", " + " ISBN: " + isbn.value + ", " + " Author: " + author.value;
+
+      setText(allText);
     };
-
-
-
-
 
     return (
       <Wrapper>
