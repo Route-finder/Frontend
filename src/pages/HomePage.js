@@ -4,7 +4,6 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import MeetupList from '../components/meetups/MeetupList';
 import Wrapper from '../components/ui/Wrapper';
 import {useState} from 'react';
 
@@ -25,7 +24,7 @@ function HomePage() {
        */
 
       // If ISBN provided, select the first result
-      if (isbn.value != "") {
+      if (isbn.value !== "") {
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -40,7 +39,7 @@ function HomePage() {
       }
 
       // If title or author provided, send as a request
-      else if (author.vaule != "" || title.value != "") {
+      else if (author.vaule !== "" || title.value !== "") {
         let response = fetch("https://library-guide.herokuapp.com/api/search", {
         // let response = fetch("http://localhost:3100/api/search/", {
           method: 'POST',
@@ -57,7 +56,7 @@ function HomePage() {
         alert("Please enter one or more values");
       }
       
-      let allText = "Book Name: " + title.value + ", " + " ISBN: " + isbn.value + ", " + " Author: " + author.value;
+      let allText = "Book Name: " + title.value + ", ISBN: " + isbn.value + ", Author: " + author.value;
 
       setText(allText);
     };
