@@ -36,6 +36,16 @@ function HomePage() {
         fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
           .then(response => response.json())
           .then(data => console.log(data));
+        
+        // Set localstorage
+        try {
+          let books = localStorage.getItem("books");
+          books.append("second");
+          localStorage.setItem("books", books);
+        }
+        catch {
+          localStorage.setItem("books", ["hello"]);
+        }
       }
 
       // If title or author provided, send as a request
