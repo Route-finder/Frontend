@@ -62,13 +62,15 @@ function ListOfBooksPage() {
 				<button class="mui-btn mui-btn--danger mui-btn--raised">
 					Remove Selected Items
 				</button>
-				<button class="mui-btn mui-btn--primary mui-btn--raised">
+				{/* Onclick function will eventually display the map for a shortest path of the selected books */}
+				<button class="mui-btn mui-btn--primary mui-btn--raised" onClick = {changeText}>
 					View Map and Key
 				</button>
+				
 			</div>
 
-			{/* What is the onClick function supposed to do here? */}
-            <button onClick = {changeText}>Search</button>
+			
+            
 
             <div>
                 {!text ? " ": text}
