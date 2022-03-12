@@ -19,6 +19,8 @@ function HomePage() {
         let isbn = document.getElementById("search1");
         let author = document.getElementById("search2");
 
+        console.log(isbn);
+
       /**
        * Submit request to backend with info for OCLC request
        */
@@ -32,23 +34,43 @@ function HomePage() {
           },
           body: JSON.stringify({isbn: isbn.value})
         };
-
         fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
           .then(response => response.json())
-          .then(data => console.log(data));
+          .then(data => 
+            {
+              try {
+                setText(data.book.title)
+              }
+              catch {
+                setText("Error: Bad input")
+              }
+            }
+          );
       }
 
       // If title or author provided, send as a request
       else if (author.vaule !== "" || title.value !== "") {
-        let response = fetch("https://library-guide.herokuapp.com/api/search", {
-        // let response = fetch("http://localhost:3100/api/search/", {
+        const requestOptions = {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
           body: JSON.stringify({author: author.vaule, title: title.value})
-        });
-        console.log(response);
+        };
+        
+        fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
+          .then(response => response.json())
+          .then(data =>
+            {
+              try {
+                setText(data.book.title)
+              }
+              catch {
+                setText("Error: Bad input")
+              }
+            }  
+          );
+        
       }
 
       // Otherwise, return an error if no values provided
@@ -56,9 +78,9 @@ function HomePage() {
         alert("Please enter one or more values");
       }
       
-      let allText = "Book Name: " + title.value + ", ISBN: " + isbn.value + ", Author: " + author.value;
+      // let allText = "Book Name: " + title.value + ", ISBN: " + isbn.value + ", Author: " + author.value;
 
-      setText(allText);
+      // setText(allText);
     };
 
     return (
