@@ -34,8 +34,12 @@ function HomePage() {
           </div>
         </form>
 
-        <p>
-          {!text ? "Please enter your name before continuing": text}
+        <p id="welcome">
+          {
+            !text && !localStorage.getItem("name")
+            ? "Please enter your name before continuing"
+            : `Welcome, ${localStorage.getItem("name")}!`
+          }
         </p>
 
       </Wrapper>
