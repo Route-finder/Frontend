@@ -30,7 +30,7 @@ function AddBooksPage() {
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({isbn: isbn.value})
+          body: JSON.stringify({isbn: isbn.value, name: localStorage.getItem("name")})
         };
 
         fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
@@ -41,12 +41,11 @@ function AddBooksPage() {
       // If title or author provided, send as a request
       else if (author.vaule !== "" || title.value !== "") {
         let response = fetch("https://library-guide.herokuapp.com/api/search", {
-        // let response = fetch("http://localhost:3100/api/search/", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({author: author.vaule, title: title.value})
+          body: JSON.stringify({author: author.vaule, title: title.value, name: localStorage.getItem("name")})
         });
         console.log(response);
       }
