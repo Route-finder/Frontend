@@ -35,29 +35,40 @@ function AddBooksPage() {
 
         fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
           .then(response => response.json())
-          .then(data => console.log(data));
+          .then(data => 
+            {
+              try {
+                setText(data.book.title)
+              }
+              catch {
+                setText("Error: Bad input")
+              }
+            });
       }
 
       // If title or author provided, send as a request
       else if (author.vaule !== "" || title.value !== "") {
-        let response = fetch("https://library-guide.herokuapp.com/api/search", {
+        const requestOptions = {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({author: author.vaule, title: title.value, name: localStorage.getItem("name")})
-        });
-        console.log(response);
+          body: JSON.stringify({author: author.vaule, title: title.value, name: localStorage.getItem()})
+        };
+        
+        fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
+          .then(response => response.json())
+          .then(data =>
+            {
+              try {
+                setText(data.book.title)
+              }
+              catch {
+                setText("Error: Bad input")
+              }
+            }
+          );
       }
-
-      // Otherwise, return an error if no values provided
-      else {
-        alert("Please enter one or more values");
-      }
-      
-      let allText = "Book Name: " + title.value + ", ISBN: " + isbn.value + ", Author: " + author.value;
-
-      setText(allText);
     };
 
     return (
