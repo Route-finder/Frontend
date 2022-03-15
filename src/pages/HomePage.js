@@ -12,14 +12,14 @@ function HomePage() {
   const [text, setText] = useState(null);
    
     const clickHandler = (event) => {
-        // When clicked, set text to value of input box
-        event.preventDefault();
-        // console.log("Clicked");
-        let title = document.getElementById("search");
-        let isbn = document.getElementById("search1");
-        let author = document.getElementById("search2");
+      // When clicked, set text to value of input box
+      event.preventDefault();
+      // console.log("Clicked");
+      let title = document.getElementById("search");
+      let isbn = document.getElementById("search1");
+      let author = document.getElementById("search2");
 
-        console.log(isbn);
+      console.log(isbn);
 
       /**
        * Submit request to backend with info for OCLC request
