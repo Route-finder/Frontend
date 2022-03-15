@@ -14,98 +14,28 @@ function HomePage() {
     const clickHandler = (event) => {
       // When clicked, set text to value of input box
       event.preventDefault();
-      // console.log("Clicked");
-      let title = document.getElementById("search");
-      let isbn = document.getElementById("search1");
-      let author = document.getElementById("search2");
-
-      console.log(isbn);
-
-      /**
-       * Submit request to backend with info for OCLC request
-       */
-
-      // If ISBN provided, select the first result
-      if (isbn.value !== "") {
-        const requestOptions = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({isbn: isbn.value})
-        };
-        fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
-          .then(response => response.json())
-          .then(data => 
-            {
-              try {
-                setText(data.book.title)
-              }
-              catch {
-                setText("Error: Bad input")
-              }
-            }
-          );
-      }
-
-      // If title or author provided, send as a request
-      else if (author.vaule !== "" || title.value !== "") {
-        const requestOptions = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify({author: author.vaule, title: title.value})
-        };
-        
-        fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
-          .then(response => response.json())
-          .then(data =>
-            {
-              try {
-                setText(data.book.title)
-              }
-              catch {
-                setText("Error: Bad input")
-              }
-            }  
-          );
-        
-      }
-
-      // Otherwise, return an error if no values provided
-      else {
-        alert("Please enter one or more values");
-      }
       
-      // let allText = "Book Name: " + title.value + ", ISBN: " + isbn.value + ", Author: " + author.value;
-
-      // setText(allText);
+      // Save the entered username
+      let uName = document.getElementById("username").value;
+      console.log(uName);
+      localStorage.setItem("name", uName);
+      setText(`Welcome, ${uName}!`);
     };
 
     return (
       <Wrapper>
         <form className = 'form'>
           <div>
-            <p>Book Title: </p>
-            <input id="search" type = "text"></input>
+            <p>Name</p>
+            <input id="username" type = "text"></input>
           </div>
           <div>
-            <p>ISBN Number: </p>
-            <input id="search1" type = "text"></input>
-          </div>
-          <div>
-            <p>Author: </p>
-            <input id="search2" type = "text"></input>
-          </div>
-          <br></br>
-          <div>
-            <button onClick = {clickHandler}>Search</button>
+            <button onClick = {clickHandler}>Submit</button>
           </div>
         </form>
 
         <p>
-          {!text ? "Empty Basket, please choose a book": text}
+          {!text ? "Please enter your name before continuing": text}
         </p>
 
       </Wrapper>
