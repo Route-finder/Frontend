@@ -72,31 +72,36 @@ function AddBooksPage() {
     };
 
     return (
-      <Wrapper>
-        <form className = 'form'>
-          <div>
-            <p>Book Title: </p>
-            <input id="search" type = "text"></input>
-          </div>
-          <div>
-            <p>ISBN Number: </p>
-            <input id="search1" type = "text"></input>
-          </div>
-          <div>
-            <p>Author: </p>
-            <input id="search2" type = "text"></input>
-          </div>
-          <br></br>
-          <div>
-            <button onClick = {clickHandler}>Search</button>
-          </div>
-        </form>
+      <div>
+        <h1 id="welcome">
+          Enter a search term below:
+        </h1>
+        <Wrapper>
+          <form className = 'form'>
+            <div>
+              <p>Book Title: </p>
+              <input id="search" type = "text"></input>
+            </div>
+            <div>
+              <p>ISBN Number: </p>
+              <input id="search1" type = "text"></input>
+            </div>
+            <div>
+              <p>Author: </p>
+              <input id="search2" type = "text"></input>
+            </div>
+            <br></br>
+            <div>
+              <button class="mui-btn mui-btn--primary mui-btn--raised" onClick = {clickHandler}>Search</button>
+            </div>
+          </form>
 
-        <p>
-          {!text ? "Empty Basket, please choose a book": text}
-        </p>
+          <p>
+            {!text ? "Empty Basket, please choose a book": text}
+          </p>
 
-      </Wrapper>
+        </Wrapper>
+      </div>
       
         
     )
