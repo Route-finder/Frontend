@@ -22,27 +22,36 @@ function HomePage() {
       setText(`Welcome, ${uName}!`);
     };
 
-    return (
-      <Wrapper>
-        <form className = 'form'>
-          <div>
-            <p>Name</p>
-            <input id="username" type = "text"></input>
-          </div>
-          <div>
-            <button onClick = {clickHandler}>Submit</button>
-          </div>
-        </form>
+    const logOut = () => {
+      localStorage.removeItem("name");
+      setText("Please enter your name before continuing");
+    };
 
-        <p id="welcome">
+    return (
+      <div>
+        <h1 id="welcome">
           {
-            !text && !localStorage.getItem("name")
+            (!text && !localStorage.getItem("name")) || localStorage.getItem("name") == null
             ? "Please enter your name before continuing"
             : `Welcome, ${localStorage.getItem("name")}!`
           }
-        </p>
+        </h1>
 
-      </Wrapper>
+        <Wrapper>
+          <form className = 'form'>
+            <div>
+              <p>Name</p>
+              <input id="username" type = "text"></input>
+            </div>
+            <div>
+              <button class="mui-btn mui-btn--primary mui-btn--raised" onClick = {clickHandler}>Submit</button>
+            </div>
+          </form>
+
+        </Wrapper>
+
+        <button class="mui-btn mui-btn--danger mui-btn--raised" onClick = {logOut} id="logout">Log Out</button>
+      </div>
       
         
     )
