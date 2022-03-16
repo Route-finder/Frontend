@@ -53,7 +53,7 @@ function AddBooksPage() {
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-          body: JSON.stringify({author: author.vaule, title: title.value, name: localStorage.getItem()})
+          body: JSON.stringify({author: author.vaule, title: title.value, name: localStorage.getItem("name")})
         };
         
         fetch("https://library-guide.herokuapp.com/api/search", requestOptions)
