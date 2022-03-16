@@ -12,10 +12,10 @@ function MainNavigation(){
                         <Link to = '/'>Home</Link>
                     </li>
                     <li>
-                        <Link to = '/book-list'>List of Books</Link>
+                        <Link to = 'add'>Add Books</Link>
                     </li>
                     <li>
-                        <Link to = 'books-stored'>Books Stored</Link>
+                        <Link to = '/book-list'>List of Books</Link>
                     </li>
                 </ul>
             </nav>

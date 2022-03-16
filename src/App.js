@@ -14,10 +14,10 @@ import 'normalize.css';
  * Local application resources
  */
 import HomePage from './pages/HomePage';
-import BooksStoredPage from './pages/BookStored';
 import ListOfBooksPage from './pages/ListOfBooks';
 // import MainNavigation from './components/layout/MainNavigation'
 import Layout from './components/layout/Layout';
+import AddBooksPage from './pages/AddBooks';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='book-list' element = {<ListOfBooksPage />} />
-        <Route path='books-stored' element={<BooksStoredPage />} />
+        <Route path='add' element={<AddBooksPage />} />
       </Routes>
     </Layout>
     
