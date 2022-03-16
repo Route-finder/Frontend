@@ -58,13 +58,22 @@ function ListOfBooksPage() {
     return (
         <div>
             <h1>Books to be Found</h1>
+
+			{
+				!localStorage.getItem("name") ?
+				<a className="mui-btn mui-btn--raised" href="/">
+					Login to See Your Books
+				</a> :
+				""
+			}
+
             <Table columns={columns} data={data} />
 			<div id="buttons">
-				<button class="mui-btn mui-btn--danger mui-btn--raised">
+				<button className="mui-btn mui-btn--danger mui-btn--raised">
 					Remove Selected Items
 				</button>
 				{/* Onclick function will eventually display the map for a shortest path of the selected books */}
-				<button class="mui-btn mui-btn--primary mui-btn--raised" onClick = {changeText}>
+				<button className="mui-btn mui-btn--primary mui-btn--raised" onClick = {changeText}>
 					View Map and Key
 				</button>
 				
