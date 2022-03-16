@@ -44,13 +44,13 @@ function HomePage() {
               <input id="username" type = "text"></input>
             </div>
             <div>
-              <button class="mui-btn mui-btn--primary mui-btn--raised" onClick = {clickHandler}>Submit</button>
+              <button className="mui-btn mui-btn--primary mui-btn--raised" onClick = {clickHandler}>Submit</button>
             </div>
           </form>
 
         </Wrapper>
 
-        <button class="mui-btn mui-btn--danger mui-btn--raised" onClick = {logOut} id="logout">Log Out</button>
+        <button className="mui-btn mui-btn--danger mui-btn--raised" onClick = {logOut} id="logout">Log Out</button>
       </div>
       
         
