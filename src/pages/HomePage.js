@@ -5,6 +5,7 @@
  */
 
 import Wrapper from '../components/ui/Wrapper';
+
 import {useState} from 'react';
 
 function HomePage() {
@@ -20,6 +21,8 @@ function HomePage() {
       console.log(uName);
       localStorage.setItem("name", uName);
       setText(`Welcome, ${uName}!`);
+      // After the user confirmation, render the Add Books page!
+         window.location.href='https://route-finder.netlify.app/add';
     };
 
     const logOut = () => {
