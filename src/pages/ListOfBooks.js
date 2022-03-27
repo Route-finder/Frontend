@@ -36,6 +36,18 @@ function ListOfBooksPage() {
         setText(changeIt);
     };
 
+	// Delete the books if clicked
+	const [deleteText, setdeleteText] = useState (null);
+
+	const deleteBooks = (event) => {
+        event.preventDefault();
+        let deleted = "will Delete now";
+        // setdeleteText(deleted);
+		console.log(deleted)
+    };
+
+	
+
 
 	const columns = [
 		{
@@ -67,9 +79,10 @@ function ListOfBooksPage() {
 				""
 			}
 
-            <Table columns={columns} data={data} />
+            <Table columns={columns} data={data}></Table>
+			
 			<div id="buttons">
-				<button className="mui-btn mui-btn--danger mui-btn--raised">
+				<button className="mui-btn mui-btn--danger mui-btn--raised" onlClick = {deleteBooks}>
 					Remove Selected Items
 				</button>
 				{/* Onclick function will eventually display the map for a shortest path of the selected books */}
@@ -85,6 +98,7 @@ function ListOfBooksPage() {
             <div>
                 {!text ? " ": text}
             </div>
+			
         </div>
     );
 }
