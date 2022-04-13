@@ -32,6 +32,7 @@ function HomePage() {
 
     return (
       <div>
+        {/* Get a username and let the user sign in! */}
         <h1 id="welcome">
           {
             (!text && !localStorage.getItem("name")) || localStorage.getItem("name") == null
@@ -41,6 +42,7 @@ function HomePage() {
         </h1>
 
         <Wrapper>
+          {/* A form for a user  */}
           <form className = 'form'>
             <div>
               <p>Name</p>
