@@ -78,6 +78,10 @@ function AddBooksPage() {
         </h1>
         <Wrapper>
           <form className = 'form'>
+            {/* <div>
+              
+              <input id="search" type = "checkbox"></input>
+            </div> */}
             <div>
               <p>Book Title: </p>
               <input id="search" type = "text"></input>

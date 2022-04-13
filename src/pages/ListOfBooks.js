@@ -36,6 +36,40 @@ function ListOfBooksPage() {
         setText(changeIt);
     };
 
+	// Delete the books if clicked
+	// const [deleteText, setdeleteText] = useState (null);
+
+	const deleteBooks = (event) => {
+        event.preventDefault();
+        // let deleted = "will Delete now";
+		// setdeleteText(deleted);
+        if (localStorage.getItem("name") !== null) {
+			const requestOptions = {
+			  method: 'POST',
+			  headers: {
+				'Content-Type': 'application/json;charset=utf-8'
+			  },
+			  body: JSON.stringify({name: localStorage.getItem("name")})
+			};
+	
+			fetch("https://library-guide.herokuapp.com/api/remove", requestOptions)
+			  .then(response => response.json())
+			  .then(data => 
+				{
+				  try {
+					setText(data.Status)
+				  }
+				  catch {
+					setText("Error: Bad input")
+				  }
+				  window.location.reload(false);
+				  //   window.location.href='https://route-finder.netlify.app/book-list';
+			});
+		} 
+    };
+
+	
+
 
 	const columns = [
 		{
@@ -67,9 +101,10 @@ function ListOfBooksPage() {
 				""
 			}
 
-            <Table columns={columns} data={data} />
+            <Table columns={columns} data={data}></Table>
+			
 			<div id="buttons">
-				<button className="mui-btn mui-btn--danger mui-btn--raised">
+				<button className="mui-btn mui-btn--danger mui-btn--raised" onClick = {deleteBooks}>
 					Remove Selected Items
 				</button>
 				{/* Onclick function will eventually display the map for a shortest path of the selected books */}
@@ -79,12 +114,15 @@ function ListOfBooksPage() {
 				
 			</div>
 
-			
+			{/* <div>
+                {!deleteText ? " ": deleteText}
+            </div> */}
             
 
             <div>
                 {!text ? " ": text}
             </div>
+			
         </div>
     );
 }
