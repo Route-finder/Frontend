@@ -22,7 +22,7 @@ function HomePage() {
       localStorage.setItem("name", uName);
       setText(`Welcome, ${uName}!`);
       // After the user confirmation, render the Add Books page!
-         window.location.href='https://route-finder.netlify.app/add';
+         window.location.href='/add';
     };
 
     const logOut = () => {
