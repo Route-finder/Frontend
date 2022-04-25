@@ -1,0 +1,44 @@
+[
+    {
+        "left": [
+            { "min": "QA264", "max": "QA439" },
+            { "min": "QA439", "max": "QB1" },
+            { "min": "QB1", "max": "QB519" },
+            { "min": "QB519", "max": "QC1" }
+        ],
+        "right": [
+            { "min": "QD1", "max": "QD49" },
+            { "min": "QC450", "max": "QD49" },
+            { "min": "QC21", "max": "QC450" },
+            { "min": "QC1", "max": "QC21" }
+        ]
+    },
+    {
+        "left": [
+            { "min": "QD50", "max": "QD999" },
+            { "min": "QD999", "max": "QE999" },
+            { "min": "QE999", "max": "QH96" },
+            { "min": "QH96", "max": "QH390" }
+        ],
+        "right": [
+            { "min": "QH573", "max": "QK482" },
+            { "min": "QH460", "max": "QH573" },
+            { "min": "QH336", "max": "QH460" },
+            { "min": "QH301", "max": "QH336" }
+        ]
+    },
+    {
+        "left": [
+            { "min": "QK483", "max": "QL39" },
+            { "min": "QL39", "max": "QL544" },
+            { "min": "QL554", "max": "QL696" },
+            { "min": "QL696", "max": "QL737" }
+        ],
+        "right": [
+            { "min": "", "max": "" },
+            { "min": "QP1", "max": "QP501" },
+            { "min": "QL770", "max": "QP1" },
+            { "min": "QL737", "max": "QL770" }
+        ]
+    }
+]

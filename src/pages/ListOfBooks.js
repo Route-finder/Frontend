@@ -7,6 +7,7 @@
 import React from "react";
 import Table from 'rc-table';
 import {useState} from 'react';
+import Map from "./../components/ui/Map";
 
 function ListOfBooksPage() {
 	const [data, setData] = React.useState(null);
@@ -122,6 +123,9 @@ function ListOfBooksPage() {
             <div>
                 {!text ? " ": text}
             </div>
+     <React.StrictMode>
+        <Map />
+    </React.StrictMode>
 			
         </div>
     );
