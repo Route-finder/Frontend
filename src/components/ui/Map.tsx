@@ -1,6 +1,6 @@
 import React from "react";
 import "./Map.css";
-import { Arrow, Stage, Layer, Rect, Text, Line, Group } from "react-konva";
+import { Stage, Layer, Rect, Text, Line, Group } from "react-konva";
 const lc = require("lc_call_number_compare");
 
 // Make consts actually const
