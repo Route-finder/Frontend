@@ -4,18 +4,16 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'normalize.css';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "normalize.css";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-<BrowserRouter>
-    <App />
-</BrowserRouter>,
-document.getElementById('root'));
-
-
- 
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.getElementById("root")
+);

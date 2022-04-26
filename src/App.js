@@ -7,32 +7,28 @@
 /**
  * React and NPM Components
  */
-import {Route, Routes} from 'react-router-dom';
-import 'normalize.css';
+import { Route, Routes } from "react-router-dom";
+import "normalize.css";
 
 /**
  * Local application resources
  */
-import HomePage from './pages/HomePage';
-import ListOfBooksPage from './pages/ListOfBooks';
+import HomePage from "./pages/HomePage";
+import ListOfBooksPage from "./pages/ListOfBooks";
 // import MainNavigation from './components/layout/MainNavigation'
-import Layout from './components/layout/Layout';
-import AddBooksPage from './pages/AddBooks';
+import Layout from "./components/layout/Layout";
+import AddBooksPage from "./pages/AddBooks";
 
 function App() {
-  return (
-
-    <Layout>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='book-list' element = {<ListOfBooksPage />} />
-        <Route path='add' element={<AddBooksPage />} />
-      </Routes>
-    </Layout>
-    
-    
-    
-  );
+    return (
+        <Layout>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="book-list" element={<ListOfBooksPage />} />
+                <Route path="add" element={<AddBooksPage />} />
+            </Routes>
+        </Layout>
+    );
 }
 
 export default App;

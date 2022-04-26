@@ -102,11 +102,14 @@ function Path(k: Array<LeftRight<Array<Printable>>>) {
         lrmap(row, (side) => side.some((x) => x.count > 0))
     );
 
-    const v = shelves_to_visit.map((shelf, i) => 
-	shelf.left ? 
-	 AISLE_WIDTH / 2 + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i 
-	 : null).filter(x => x);
-    console.log( v);
+    const v = shelves_to_visit
+        .map((shelf, i) =>
+            shelf.left
+                ? AISLE_WIDTH / 2 + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
+                : null
+        )
+        .filter((x) => x);
+    console.log(v);
 }
 
 interface LeftRight<T> {
@@ -178,7 +181,7 @@ function Map() {
                         AISLE_WIDTH + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
                     )
                 )}
-		{Path(with_counts)}
+                {Path(with_counts)}
             </Layer>
         </Stage>
     );
