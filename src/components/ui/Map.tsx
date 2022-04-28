@@ -8,7 +8,6 @@ type Array<T> = ReadonlyArray<T>;
 
 // This shouldn't be a constant, this should be read from
 // the database
-const BOOKS: Array<BookI> = require("./test_books.json");
 
 const LIBRARY: Array<LeftRight<Array<Bounds>>> = require("./map.json");
 const DEFAULT_SHELF_WIDTH = 200;
