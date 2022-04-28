@@ -1,10 +1,10 @@
 [
-    { "name": "Grammar", "section": "QA76.6" },
-    { "name": "TAOCP", "section": "QA76.6" },
-    { "name": "Desert", "section": "QH102" },
-    { "name": "Hartshorne", "section": "QA276.3" },
-    { "name": "Ideals", "section": "QA564" },
-    { "name": "Geometry", "section": "QA515" },
-    { "name": "Harris", "section": "QA564" },
-    { "name": "Topology", "section": "QA614" }
+    { "name": "Grammar", "call_no": "QA76.6" },
+    { "name": "TAOCP", "call_no": "QA76.6" },
+    { "name": "Desert", "call_no": "QH102" },
+    { "name": "Hartshorne", "call_no": "QA276.3" },
+    { "name": "Ideals", "call_no": "QA564" },
+    { "name": "Geometry", "call_no": "QA515" },
+    { "name": "Harris", "call_no": "QA564" },
+    { "name": "Topology", "call_no": "QA614" }
 ]

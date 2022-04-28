@@ -8,7 +8,6 @@ type Array<T> = ReadonlyArray<T>;
 
 // This shouldn't be a constant, this should be read from
 // the database
-const BOOKS: Array<BookI> = require("./test_books.json");
 
 const LIBRARY: Array<LeftRight<Array<Bounds>>> = require("./map.json");
 const DEFAULT_SHELF_WIDTH = 200;
@@ -31,8 +30,7 @@ interface Bounds {
 }
 
 interface BookI {
-    readonly name: string;
-    readonly section: string;
+    readonly call_no: string;
 }
 
 interface ShelfI {
@@ -47,6 +45,8 @@ interface ShelfI {
 }
 
 function betweenLC(b: Bounds, x: string) {
+    console.log(b)
+    console.log(x);
     return lc.lte(x, b.max) && lc.gte(x, b.min);
 }
 
@@ -102,11 +102,14 @@ function Path(k: Array<LeftRight<Array<Printable>>>) {
         lrmap(row, (side) => side.some((x) => x.count > 0))
     );
 
-    const v = shelves_to_visit.map((shelf, i) => 
-	shelf.left ? 
-	 AISLE_WIDTH / 2 + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i 
-	 : null).filter(x => x);
-    console.log( v);
+    const v = shelves_to_visit
+        .map((shelf, i) =>
+            shelf.left
+                ? AISLE_WIDTH / 2 + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
+                : null
+        )
+        .filter((x) => x);
+    console.log(v);
 }
 
 interface LeftRight<T> {
@@ -157,13 +160,17 @@ function lrmap<T, U>(lr: LeftRight<T>, f: (a: T) => U) {
     };
 }
 
-function Map() {
+function Map(books: Array<BookI> | null) {
     // The infered type doesn't use constants, so it needs to be written out
+    // books = BOOKS;
+    console.log("SDfsdf1");
+    console.log(books);
+    console.log("SDfsdf2");
     const with_counts: Array<LeftRight<Array<Printable>>> = LIBRARY.map((row) =>
         lrmap(row, (side) =>
             side.map((shelf) => ({
                 bounds: shelf,
-                count: BOOKS.filter((book) => betweenLC(shelf, book.section))
+                count: (books ? books : []).filter((book) => betweenLC(shelf, book.call_no))
                     .length,
             }))
         )
@@ -178,7 +185,7 @@ function Map() {
                         AISLE_WIDTH + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
                     )
                 )}
-		{Path(with_counts)}
+                {Path(with_counts)}
             </Layer>
         </Stage>
     );
