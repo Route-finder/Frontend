@@ -31,8 +31,7 @@ interface Bounds {
 }
 
 interface BookI {
-    readonly name: string;
-    readonly section: string;
+    readonly call_no: string;
 }
 
 interface ShelfI {
@@ -47,6 +46,8 @@ interface ShelfI {
 }
 
 function betweenLC(b: Bounds, x: string) {
+    console.log(b)
+    console.log(x);
     return lc.lte(x, b.max) && lc.gte(x, b.min);
 }
 
@@ -160,13 +161,17 @@ function lrmap<T, U>(lr: LeftRight<T>, f: (a: T) => U) {
     };
 }
 
-function Map() {
+function Map(books: Array<BookI> | null) {
     // The infered type doesn't use constants, so it needs to be written out
+    // books = BOOKS;
+    console.log("SDfsdf1");
+    console.log(books);
+    console.log("SDfsdf2");
     const with_counts: Array<LeftRight<Array<Printable>>> = LIBRARY.map((row) =>
         lrmap(row, (side) =>
             side.map((shelf) => ({
                 bounds: shelf,
-                count: BOOKS.filter((book) => betweenLC(shelf, book.section))
+                count: (books ? books : []).filter((book) => betweenLC(shelf, book.call_no))
                     .length,
             }))
         )

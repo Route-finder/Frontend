@@ -33,12 +33,6 @@ function ListOfBooksPage() {
 
     const [text, setText] = useState(null);
 
-    const changeText = (event) => {
-        event.preventDefault();
-        let changeIt = "Currently Searching Shortest Route, Please Be PATIENT!";
-        setText(changeIt);
-    };
-
     // Delete the books if clicked
     // const [deleteText, setdeleteText] = useState (null);
 
@@ -111,13 +105,6 @@ function ListOfBooksPage() {
                 >
                     Remove Selected Items
                 </button>
-                {/* Onclick function will eventually display the map for a shortest path of the selected books */}
-                <button
-                    className="mui-btn mui-btn--primary mui-btn--raised"
-                    onClick={changeText}
-                >
-                    View Map and Key
-                </button>
             </div>
 
             {/* <div>
@@ -126,7 +113,7 @@ function ListOfBooksPage() {
 
             <div>{!text ? " " : text}</div>
             <React.StrictMode>
-                <Map />
+	{Map(data)}
             </React.StrictMode>
         </div>
     );
