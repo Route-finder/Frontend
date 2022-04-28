@@ -45,7 +45,7 @@ interface ShelfI {
 }
 
 function betweenLC(b: Bounds, x: string) {
-    console.log(b)
+    console.log(b);
     console.log(x);
     return lc.lte(x, b.max) && lc.gte(x, b.min);
 }
@@ -170,8 +170,9 @@ function Map(books: Array<BookI> | null) {
         lrmap(row, (side) =>
             side.map((shelf) => ({
                 bounds: shelf,
-                count: (books ? books : []).filter((book) => betweenLC(shelf, book.call_no))
-                    .length,
+                count: (books ? books : []).filter((book) =>
+                    betweenLC(shelf, book.call_no)
+                ).length,
             }))
         )
     );

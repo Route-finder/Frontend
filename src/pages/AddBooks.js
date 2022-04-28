@@ -14,9 +14,7 @@ function AddBooksPage() {
         // When clicked, set text to value of input box
         event.preventDefault();
         // console.log("Clicked");
-        let title = document.getElementById("search");
         let isbn = document.getElementById("search1");
-        let author = document.getElementById("search2");
 
         /**
          * Submit request to backend with info for OCLC request
@@ -48,39 +46,11 @@ function AddBooksPage() {
                     }
                 });
         }
-
-        // If title or author provided, send as a request
-        else if (author.vaule !== "" || title.value !== "") {
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json;charset=utf-8",
-                },
-                body: JSON.stringify({
-                    author: author.vaule,
-                    title: title.value,
-                    name: localStorage.getItem("name"),
-                }),
-            };
-
-            fetch(
-                "https://library-guide.herokuapp.com/api/search",
-                requestOptions
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    try {
-                        setText(data.book.title);
-                    } catch {
-                        setText("Error: Bad input");
-                    }
-                });
-        }
     };
 
     return (
         <div>
-            <h1 id="welcome">Enter a search term below:</h1>
+            <h1 id="welcome">Enter an ISBN below</h1>
             <Wrapper>
                 <form className="form">
                     {/* <div>
@@ -88,16 +58,8 @@ function AddBooksPage() {
               <input id="search" type = "checkbox"></input>
             </div> */}
                     <div>
-                        <p>Book Title: </p>
-                        <input id="search" type="text"></input>
-                    </div>
-                    <div>
                         <p>ISBN Number: </p>
                         <input id="search1" type="text"></input>
-                    </div>
-                    <div>
-                        <p>Author: </p>
-                        <input id="search2" type="text"></input>
                     </div>
                     <br></br>
                     <div>
