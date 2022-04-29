@@ -42,7 +42,7 @@ function AddBooksPage() {
                 .then((response) => response.json())
                 .then((data) => {
                     try {
-                        setText(data.book.title);
+                        setText(`"${data.book.title}" added to your list`);
                     } catch {
                         setText("Error: Bad input");
                     }
@@ -70,7 +70,7 @@ function AddBooksPage() {
                 .then((response) => response.json())
                 .then((data) => {
                     try {
-                        setText(data.book.title);
+                        setText(`${data.book.title} added to your list`);
                     } catch {
                         setText("Error: Bad input");
                     }
@@ -87,19 +87,18 @@ function AddBooksPage() {
               
               <input id="search" type = "checkbox"></input>
             </div> */}
-                    <div>
+                    {/* <div>
                         <p>Book Title: </p>
                         <input id="search" type="text"></input>
-                    </div>
+                    </div> */}
                     <div>
                         <p>ISBN Number: </p>
                         <input id="search1" type="text"></input>
                     </div>
-                    <div>
+                    {/* <div>
                         <p>Author: </p>
                         <input id="search2" type="text"></input>
-                    </div>
-                    <br></br>
+                    </div> */}
                     <div>
                         <button
                             class="mui-btn mui-btn--primary mui-btn--raised"
@@ -110,7 +109,7 @@ function AddBooksPage() {
                     </div>
                 </form>
 
-                <p>{!text ? "Empty Basket, please choose a book" : text}</p>
+                <p>{!text ? "Please search for a book" : text}</p>
             </Wrapper>
         </div>
     );
