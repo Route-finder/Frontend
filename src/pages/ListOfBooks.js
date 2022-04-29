@@ -103,7 +103,7 @@ function ListOfBooksPage() {
                     className="mui-btn mui-btn--danger mui-btn--raised"
                     onClick={deleteBooks}
                 >
-                    Remove Selected Items
+                    Clear List
                 </button>
             </div>
 
