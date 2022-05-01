@@ -3,20 +3,17 @@ import "./Map.css";
 import { Stage, Layer, Rect, Text, Line, Group } from "react-konva";
 const lc = require("lc_call_number_compare");
 
-// Make consts actually const
 type Array<T> = ReadonlyArray<T>;
 
-// This shouldn't be a constant, this should be read from
-// the database
-
 const LIBRARY: Array<LeftRight<Array<Bounds>>> = require("./map.json");
-const DEFAULT_SHELF_WIDTH = 200;
+const DEFAULT_SHELF_WIDTH = 90;
 const MINIMUM_SHELF_HEIGHT = 50;
 const DEFAULT_SHELF_TEXT_COLOR = "white";
 const DEFAULT_FONT_FAMILY = "monospace";
-
-const AISLE_HEIGHT = 40;
-const AISLE_WIDTH = 70;
+const NO_BOOKS_COLOR = "#7cb9e8";
+const HAS_BOOKS_COLOR = "blue";
+const AISLE_HEIGHT = 10;
+const AISLE_WIDTH = 10;
 
 const LONGEST_SHELF_LENGTH = Math.max(
     ...LIBRARY.map((x: LeftRight<Array<Bounds>>) =>
@@ -44,9 +41,17 @@ interface ShelfI {
     readonly right_color: string;
 }
 
+interface LeftRight<T> {
+    readonly left: T;
+    readonly right: T;
+}
+
+interface Printable {
+    readonly bounds: Bounds;
+    readonly count: number;
+}
+
 function betweenLC(b: Bounds, x: string) {
-    console.log(b);
-    console.log(x);
     return lc.lte(x, b.max) && lc.gte(x, b.min);
 }
 
@@ -109,18 +114,8 @@ function Path(k: Array<LeftRight<Array<Printable>>>) {
                 : null
         )
         .filter((x) => x);
-    console.log(v);
 }
 
-interface LeftRight<T> {
-    readonly left: T;
-    readonly right: T;
-}
-
-interface Printable {
-    readonly bounds: Bounds;
-    readonly count: number;
-}
 
 function boundify(b: Printable | null) {
     return b ? b.bounds.min + "-" + b.bounds.max : "";
@@ -140,13 +135,17 @@ function Row(r: LeftRight<Array<Printable>>, x: number) {
             {[...Array(r.left.length)].map((_, i) => (
                 <Shelf
                     x={x}
-                    y={i * (height + AISLE_HEIGHT) + AISLE_HEIGHT}
+                    y={i * (height + AISLE_HEIGHT)}
                     width={DEFAULT_SHELF_WIDTH}
                     height={height}
                     left_bounds={r.left[i]}
                     right_bounds={r.right[i]}
-                    left_color={r.left[i].count > 0 ? "pink" : "magenta"}
-                    right_color={r.right[i].count > 0 ? "pink" : "magenta"}
+                    left_color={
+                        r.left[i].count > 0 ? HAS_BOOKS_COLOR : NO_BOOKS_COLOR
+                    }
+                    right_color={
+                        r.right[i].count > 0 ? HAS_BOOKS_COLOR : NO_BOOKS_COLOR
+                    }
                 />
             ))}
         </Group>
@@ -163,9 +162,6 @@ function lrmap<T, U>(lr: LeftRight<T>, f: (a: T) => U) {
 function Map(books: Array<BookI> | null) {
     // The infered type doesn't use constants, so it needs to be written out
     // books = BOOKS;
-    console.log("SDfsdf1");
-    console.log(books);
-    console.log("SDfsdf2");
     const with_counts: Array<LeftRight<Array<Printable>>> = LIBRARY.map((row) =>
         lrmap(row, (side) =>
             side.map((shelf) => ({
@@ -178,13 +174,15 @@ function Map(books: Array<BookI> | null) {
     );
 
     return (
-        <Stage width={window.innerWidth} height={window.innerHeight}>
+        <Stage
+            width={
+                (4 + with_counts.length) * (AISLE_WIDTH + DEFAULT_SHELF_WIDTH)
+            }
+            height={window.innerHeight}
+        >
             <Layer>
                 {with_counts.map((row, i) =>
-                    Row(
-                        row,
-                        AISLE_WIDTH + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
-                    )
+                    Row(row, (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * (i + 1))
                 )}
                 {Path(with_counts)}
             </Layer>
