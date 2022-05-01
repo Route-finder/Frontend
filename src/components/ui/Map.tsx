@@ -102,21 +102,6 @@ function Shelf(s: ShelfI) {
     );
 }
 
-function Path(k: Array<LeftRight<Array<Printable>>>) {
-    const shelves_to_visit: Array<LeftRight<boolean>> = k.map((row) =>
-        lrmap(row, (side) => side.some((x) => x.count > 0))
-    );
-
-    const v = shelves_to_visit
-        .map((shelf, i) =>
-            shelf.left
-                ? AISLE_WIDTH / 2 + (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * i
-                : null
-        )
-        .filter((x) => x);
-}
-
-
 function boundify(b: Printable | null) {
     return b ? b.bounds.min + "-" + b.bounds.max : "";
 }
@@ -184,7 +169,6 @@ function Map(books: Array<BookI> | null) {
                 {with_counts.map((row, i) =>
                     Row(row, (AISLE_WIDTH + DEFAULT_SHELF_WIDTH) * (i + 1))
                 )}
-                {Path(with_counts)}
             </Layer>
         </Stage>
     );
