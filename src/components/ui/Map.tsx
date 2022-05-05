@@ -10,8 +10,7 @@ const DEFAULT_SHELF_WIDTH = 90;
 const MINIMUM_SHELF_HEIGHT = 50;
 const DEFAULT_SHELF_TEXT_COLOR = "white";
 const DEFAULT_FONT_FAMILY = "monospace";
-const NO_BOOKS_COLOR = "#7cb9e8";
-const HAS_BOOKS_COLOR = "blue";
+const BOOK_COLORS = ["a0a3ba", "7583ce", "5063ce", "2039c9"];
 const AISLE_HEIGHT = 10;
 const AISLE_WIDTH = 10;
 
@@ -20,6 +19,12 @@ const LONGEST_SHELF_LENGTH = Math.max(
         Math.max(x.left.length, x.right.length)
     )
 );
+
+function pick_color(n: number) {
+    return "#" + (BOOK_COLORS[n]
+        ? BOOK_COLORS[n]
+        : BOOK_COLORS[BOOK_COLORS.length - 1]);
+}
 
 interface Bounds {
     readonly min: string;
@@ -126,10 +131,10 @@ function Row(r: LeftRight<Array<Printable>>, x: number) {
                     left_bounds={r.left[i]}
                     right_bounds={r.right[i]}
                     left_color={
-                        r.left[i].count > 0 ? HAS_BOOKS_COLOR : NO_BOOKS_COLOR
+                        pick_color(r.left[i].count)
                     }
                     right_color={
-                        r.right[i].count > 0 ? HAS_BOOKS_COLOR : NO_BOOKS_COLOR
+                        pick_color(r.right[i].count)
                     }
                 />
             ))}
