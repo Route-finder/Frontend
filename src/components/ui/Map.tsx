@@ -10,7 +10,7 @@ const DEFAULT_SHELF_WIDTH = 90;
 const MINIMUM_SHELF_HEIGHT = 50;
 const DEFAULT_SHELF_TEXT_COLOR = "white";
 const DEFAULT_FONT_FAMILY = "monospace";
-const BOOK_COLORS = ["eaeaea", "7583ce", "5063ce", "2039c9"];
+const BOOK_COLORS = ["bababa", "7583ce", "5063ce", "2039c9"];
 const AISLE_HEIGHT = 10;
 const AISLE_WIDTH = 10;
 
